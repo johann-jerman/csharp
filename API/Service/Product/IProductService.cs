@@ -8,7 +8,7 @@ namespace API.Service.Product
         IEnumerable<Products> Get();
         Products GetById(int id);
         Products Create(ProductDTO data);
-        Products Update(Products data, int id);
+        Products Update(ProductDTO data, int id);
         void Delete(int id);
     }
 }

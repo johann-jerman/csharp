@@ -8,7 +8,7 @@ namespace API.Repository.Product
         IEnumerable<Products> Get();
         Products GetById(int id);
         Products Create(ProductDTO product);
-        Products Update(Products product, int id);
+        Products Update(ProductDTO product, int id);
         void Delete(int id);
     }
 }

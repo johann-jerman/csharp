@@ -19,7 +19,8 @@ namespace API.Repository.Product
 
         public Products GetById(int id)
         {
-            return _Context.Products.SingleOrDefault(product => product.Id == id);
+            return _Context.Products.SingleOrDefault(product => product.Id == id) 
+                ?? throw new KeyNotFoundException("No existe Producto con ese Id");
         }
 
         public Products Create(ProductDTO product)
@@ -34,13 +35,13 @@ namespace API.Repository.Product
             return result;
         }
 
-        public Products Update(Products data, int id)
+        public Products Update(ProductDTO data, int id)
         {
-            Products product= _Context.Products.SingleOrDefault(p => p.Id == id);
-            if (product == null) throw new KeyNotFoundException();
+            Products product= _Context.Products.SingleOrDefault(p => p.Id == id) 
+                ?? throw new KeyNotFoundException("No existe el Producto para editar");
         
             product.Name = data.Name ?? product.Name;
-            product.Category = data.Category ?? product.Category;
+            product.CategoryId = data.CategoryId ?? product.CategoryId;
             _Context.SaveChanges();
             return product;
         }

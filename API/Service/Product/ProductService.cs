@@ -28,7 +28,7 @@ namespace API.Service.Product
             return _repository.Create(data);
         }
 
-        public Products Update(Products data, int id)
+        public Products Update(ProductDTO data, int id)
         {
             return _repository.Update(data, id);
         }
